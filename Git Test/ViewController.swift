@@ -19,6 +19,15 @@ class ViewController: UIViewController {
         return btn
     }()
     
+    private let anotherBtn: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.backgroundColor = .red
+        btn.setTitle("Feneshed", for: .normal)
+        btn.addTarget(self, action: #selector(ViewController.btnTapped), for: .touchUpInside)
+        return btn
+    }()
+    
     private let lbl: UILabel = {
         let lbl = UILabel()
         lbl.translatesAutoresizingMaskIntoConstraints = false
@@ -39,19 +48,23 @@ class ViewController: UIViewController {
 
     fileprivate func setupElements() {
         view.addSubview(btn)
+        view.addSubview(anotherBtn)
         view.addSubview(lbl)
         
         btn.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         btn.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
         
+        anotherBtn.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        anotherBtn.topAnchor.constraint(equalTo: btn.bottomAnchor, constant: 20).isActive = true
+        
         lbl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
-        lbl.topAnchor.constraint(equalTo: btn.bottomAnchor, constant: 20).isActive = true
-        lbl.leftAnchor.constraint(equalTo: btn.leftAnchor, constant: 20).isActive = true
-        lbl.rightAnchor.constraint(equalTo: btn.rightAnchor, constant: -20).isActive = true
+        lbl.topAnchor.constraint(equalTo: anotherBtn.bottomAnchor, constant: 20).isActive = true
+        lbl.leftAnchor.constraint(equalTo: view.leftAnchor, constant: 20).isActive = true
+        lbl.rightAnchor.constraint(equalTo: view.rightAnchor, constant: -20).isActive = true
     }
     
     func btnTapped() {
-        print("tapped")
+        print("You finished")
     }
     
 }
