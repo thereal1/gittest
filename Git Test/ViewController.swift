@@ -10,9 +10,19 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    private let btn: UIButton = {
+        let btn = UIButton()
+        btn.translatesAutoresizingMaskIntoConstraints = false
+        btn.backgroundColor = .red
+        btn.setTitle("Tap Me!", for: .normal)
+        btn.addTarget(self, action: #selector(ViewController.btnTapped), for: .touchUpInside)
+        return btn
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        view.backgroundColor = .white
+        setupElements()
     }
 
     override func didReceiveMemoryWarning() {
@@ -20,6 +30,16 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
 
-
+    fileprivate func setupElements() {
+        view.addSubview(btn)
+        
+        btn.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        btn.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+    }
+    
+    func btnTapped() {
+        print("tapped")
+    }
+    
 }
 
