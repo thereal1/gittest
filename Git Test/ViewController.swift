@@ -9,7 +9,7 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    
     private let btn: UIButton = {
         let btn = UIButton()
         btn.translatesAutoresizingMaskIntoConstraints = false
@@ -17,6 +17,13 @@ class ViewController: UIViewController {
         btn.setTitle("Tap Me!", for: .normal)
         btn.addTarget(self, action: #selector(ViewController.btnTapped), for: .touchUpInside)
         return btn
+    }()
+    
+    private let lbl: UILabel = {
+        let lbl = UILabel()
+        lbl.translatesAutoresizingMaskIntoConstraints = false
+        lbl.text = "This is a label"
+        return lbl
     }()
     
     override func viewDidLoad() {
@@ -32,9 +39,15 @@ class ViewController: UIViewController {
 
     fileprivate func setupElements() {
         view.addSubview(btn)
+        view.addSubview(lbl)
         
         btn.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
         btn.centerYAnchor.constraint(equalTo: view.centerYAnchor).isActive = true
+        
+        lbl.centerXAnchor.constraint(equalTo: view.centerXAnchor).isActive = true
+        lbl.topAnchor.constraint(equalTo: btn.bottomAnchor, constant: 20).isActive = true
+        lbl.leftAnchor.constraint(equalTo: btn.leftAnchor, constant: 20).isActive = true
+        lbl.rightAnchor.constraint(equalTo: btn.rightAnchor, constant: -20).isActive = true
     }
     
     func btnTapped() {
